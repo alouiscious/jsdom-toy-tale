@@ -1,7 +1,7 @@
 let addToy = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  getAllToys(toy)
+  getAllToys()
   // insertToys(allToys)
   
   let toy = {
@@ -30,21 +30,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-// add all toys to index.html from the api database
-function getAllToys(toy) {
-  let allToys = ('http://localhost:3000/dogs');
-  fetch(allToys) 
-  .then(resp => resp.json())
-  .then(function toyCard() {
-    allToys.forEach(toy => (toy.json)()
-    toyDiv.insertAdjacentHTML("afterbegin", `<div class='card' id='card'>${toyCard}</div>`);
-  });
-}
+  // add all toys to index.html from the api database
+  function getAllToys() {
+    fetch('http://localhost:3000/toys')
+    .then(resp => resp.json())
+    .then(json => { 
+      debugger
+      // allToys.forEach(toy => (toy.json)() 
+
+      //   toyDiv.insertAdjacentHTML("afterbegin", `<div class='card' id='card'>${toyCard}</div>`)
+      
+    });
+  }
 });
 
 // add new toys to database
 function postToy(toy) {
-  fetch('http://localhost:3000/dogs', {
+  fetch('http://localhost:3000/toys', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
